@@ -1,0 +1,6 @@
+body, body * {
+  @include font;
+  h1 {
+    @include font(20pt);
+  }
+}
