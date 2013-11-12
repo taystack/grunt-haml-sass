@@ -27,11 +27,11 @@ module.exports = function(grunt) {
             cwd: "" + baseDirectory + "/src/templates",
             dest: "" + baseDirectory + "/temp/scripts/templates",
             src: '**/*.haml',
-            ext: '.js'
+            ext: '.html'
           }
         ],
         options: {
-          target: 'js'
+          target: 'html'
         }
       },
       index: {
@@ -48,31 +48,20 @@ module.exports = function(grunt) {
         }
       }
     },
-    regarde: {
+    watch: {
       haml: {
-        files: "" + baseDirectory + "/templates/**/*.haml",
-        tasks: ['haml:compile', 'livereload']
+        files: 'src/templates/**/*.haml',
+        tasks: 'haml:compile',
+        options: {
+          interrupt: true
+        }
       },
-      sass: {
-        files: "" + baseDirectory + "/src/styles/**/*.scss",
-        tasks: ['sass:compile', 'livereload']
-      },
-      "static": {
-        tasks: ['copy:static', 'livereload'],
-        files: ["" + baseDirectory + "/**/*", '!**/*.scss', '!**/*.haml']
-      }
-    },
-    copy: {
-      "static": {
-        files: [
-          {
-            expand: true,
-            filter: 'isFile',
-            cwd: "" + baseDirectory + "/src",
-            dest: "" + baseDirectory + "/temp",
-            src: ['**/*', '!**/*.ls', '!**/*.scss', '!**/*.haml']
-          }
-        ]
+      compass: {
+        files: 'src/styles/**/*.scss',
+        tasks: 'compass:compile',
+        options: {
+          interrupt: true
+        }
       }
     }
   });
@@ -81,6 +70,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-haml');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['haml', 'sass']);
+  grunt.registerTask('default', ['haml', 'sass', 'watch']);
 
 };
