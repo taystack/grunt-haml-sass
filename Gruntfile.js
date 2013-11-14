@@ -11,13 +11,7 @@ module.exports = function(grunt) {
       options: {
         language: 'coffee',
         placement: 'amd',
-        uglify: true,
-        customHtmlEscape: 'haml.escape',
-        customPreserve: 'haml.preserve',
-        customCleanValue: 'haml.clean',
-        dependencies: {
-          'haml': 'lib/base/haml'
-        }
+        uglify: true
       },
       compile: {
         files: [

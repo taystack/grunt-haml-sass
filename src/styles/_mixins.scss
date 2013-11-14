@@ -1,4 +1,4 @@
-@mixin font($size: 12pt, $color: $default-font-color) {
+@mixin font($size: 12pt, $color: $color-thing) {
   color: $color;
   font: {
     family: $default-font-family;
