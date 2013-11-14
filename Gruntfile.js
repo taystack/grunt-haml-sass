@@ -58,7 +58,7 @@ module.exports = function(grunt) {
       },
       compass: {
         files: 'src/styles/**/*.scss',
-        tasks: 'compass:compile',
+        tasks: 'sass:compile',
         options: {
           interrupt: true
         }
@@ -71,5 +71,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['haml', 'sass', 'watch']);
+  grunt.registerTask('scss', ['sass']);
 
 };

@@ -3,4 +3,11 @@ body, body * {
   h1 {
     @include font(20pt);
   }
+  form {
+    margin-top: 20px;
+    position: relative;
+    label {
+      @include font(12pt);
+    }
+  }
 }
